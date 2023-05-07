@@ -1,0 +1,96 @@
+<ion-header color="success">
+  <ion-toolbar color="success">
+    <ion-button slot="start" fill="clear">
+      <ion-back-button title="back"></ion-back-button>
+    </ion-button>
+    <ion-title>Recovery Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="flex-center">
+    <form [formGroup]="forgotForms">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title color="success">Update Password</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              type="email"
+              placeholder="Enter Email"
+              name="email"
+              formControlName="email"
+            ></ion-input>
+          </ion-item>
+          <ion-label
+            color="danger"
+            *ngIf="forgotForms.get('email').touched && forgotForms.get('email').errors?.email"
+            >Email is invalid</ion-label
+          >
+          <ion-label
+            color="danger"
+            *ngIf="forgotForms.get('email').touched && forgotForms.get('email').errors?.['required']"
+            >Email is Required</ion-label
+          >
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Enter Password"
+              name="password"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+          <ion-label
+            color="danger"
+            *ngIf="forgotForms.get('password').touched && forgotForms.get('password').errors?.['pattern']"
+            >Password is invalid</ion-label
+          >
+          <ion-label
+            color="danger"
+            *ngIf="forgotForms.get('password').touched && forgotForms.get('password').errors?.['required']"
+            >New Password is Required</ion-label
+          >
+
+          <ion-item>
+            <ion-label position="floating">Confirm Password</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              formControlName="confirmPassword"
+            ></ion-input>
+          </ion-item>
+          <ion-label
+            color="danger"
+            *ngIf="forgotForms.get('confirmPassword').touched && forgotForms.get('confirmPassword').errors?.['pattern']"
+            >Confirm Password is invalid</ion-label
+          >
+          <ion-label
+            color="danger"
+            *ngIf="forgotForms.get('confirmPassword').touched && forgotForms.get('confirmPassword').errors?.['required']"
+            >Confirm Password is Required</ion-label
+          >
+          <div
+            *ngIf="forgotForms.get('confirmPassword').touched && forgotForms.errors?.['passwordMissMatchError']"
+          >
+            <ion-label color="danger">Password MissMatch</ion-label>
+          </div>
+
+          <ion-button
+            color="success"
+            size="full"
+            [disabled]="!forgotForms.valid"
+            (click)="submit()"
+            id="recoverPasswordButton"
+            >Submit</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

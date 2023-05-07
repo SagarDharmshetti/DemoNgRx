@@ -1,0 +1,22 @@
+{
+  "usersList": [
+    {
+      "name": "Sagar",
+      "email": "Sagar@gmail.com",
+      "mobile": 7743877601,
+      "password": "Sagar@123"
+    },
+    {
+      "name": "Bhavsh",
+      "email": "Bhavesh@gmail.com",
+      "mobile": 7654986501,
+      "password": "Bhavesh@123"
+    },
+    {
+      "name": "Pavan",
+      "email": "Pavan@gmail.com",
+      "mobile": 3333333333,
+      "password": "pavan123"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+ion-button[color="dark"] {
+  text-transform: initial;
+}
+
+ion-content {
+  --background: grey;
+}
+
+ion-card-title {
+  text-align: center;
+}
+
+ion-select {
+  max-width: 40% !important;
+  display: flex;
+  // margin: 5px;
+  justify-content: end;
+  float: right;
+  color: green;
+}

@@ -1,0 +1,94 @@
+<ion-header color="success">
+  <ion-toolbar color="success">
+    <ion-title>{{'Login_Page' | translate}}</ion-title>
+    <ion-select
+    interface="popover"
+    placeholder="{{'choose_language' | translate}}"
+    (ionChange)="changeLanguage($event)"
+  >
+    <ion-select-option value="en"
+      >{{ 'language.english' | translate }}</ion-select-option
+    >
+    <ion-select-option value="fr"
+      >{{ 'language.spanish' | translate }}</ion-select-option
+    >
+  </ion-select>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="flex-center">
+    <form [formGroup]="loginForm">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title color="success">{{ 'User_Login' | translate }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">{{ 'Email' | translate }}</ion-label>
+            <ion-input
+              type="email"
+              placeholder="Enter Email"
+              name="email"
+              formControlName="email"
+            ></ion-input>
+          </ion-item>
+          <ion-label
+            color="danger"
+            *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.email"
+            >Email is invalid</ion-label
+          >
+          <ion-label
+            color="danger"
+            *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.['required']"
+            >Email is Required</ion-label
+          >
+          <ion-item>
+            <ion-label position="floating">{{ 'Password' | translate }}</ion-label>
+            <ion-input
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+          <ion-label
+            color="danger"
+            *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.['pattern']"
+            >Password is invalid</ion-label
+          >
+          <ion-label
+            color="danger"
+            *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.['required']"
+            >Password is Required</ion-label
+          >
+
+          <ion-button
+            color="dark"
+            fill="clear"
+            size="full"
+            (click)="forgotPassword()"
+            >{{ 'Forgot_Password' | translate }}</ion-button
+          >
+
+          <ion-button
+            color="success"
+            size="full"
+            [disabled]="!loginForm.valid"
+            (click)="onLogin()"
+            >{{ 'Login' | translate }}</ion-button
+          >
+
+          <ion-button
+            color="success"
+            size="full"
+            fill="clear"
+            (click)="onHome()"
+            >{{ 'Register' | translate }}</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>
