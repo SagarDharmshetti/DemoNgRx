@@ -5,11 +5,6 @@ import { AuthGuard } from './guards/auth/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule),
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
@@ -33,6 +28,11 @@ const routes: Routes = [
       import('./pages/forgot-password/forgot-pwd.module').then(
         (m) => m.ForgotPwdPageModule
       ),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule)
   },
   {
     path: 'error',

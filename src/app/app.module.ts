@@ -25,6 +25,11 @@ import { LoggedInPageModule } from './pages/logged-in/logged-in.module';
 import { HomePageModule } from './home/home.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { WindowService } from './services/windowRef/window.service';
+
 
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
@@ -35,6 +40,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     ...AppStoreModule,
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     EffectsModule.forRoot(effects),
@@ -45,6 +52,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   providers: [
     GetUserService,
     AuthService,
+    WindowService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
