@@ -26,18 +26,17 @@ export class AuthService {
 
   login(email: string, password: string): Observable<User> {
     return new Observable<User>((observer) => {
-      this.auth.setPersistence(firebase.default.auth.Auth.Persistence.LOCAL).then(() => {
-        this.auth.signInWithEmailAndPassword(email, password).then((firebaseUser: firebase.default.auth.UserCredential) => {
-          observer.next({email, uid: firebaseUser?.user?.uid || ""});
-          setTimeout(() => {
-            this.router.navigate(['logged-in']);
-            observer.complete();
-          }, 2000);
-        }).catch (error => {
-          observer.error(error);
-          observer.complete();
-        })
-      })
-    })
+      setTimeout(() => {
+        if (email !== 'Sagar@gmail.com') {
+          observer.error({ message: 'User not found' });
+          observer.next();
+        } else {
+          const user = new User();
+          user.email = email;
+          observer.next(user);
+        }
+        observer.complete();
+      }, 2000);
+    });
   }
 }

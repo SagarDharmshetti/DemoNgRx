@@ -100,7 +100,7 @@ export class LoginPage implements OnInit, OnDestroy {
     if (loginState?.isLoggedIn) {
       const toastController = await this.toastController.create({
         message: 'Login Successful.',
-        duration: 3000,
+        duration: 2000,
         color: 'success',
         position: 'bottom',
       });
@@ -112,7 +112,7 @@ export class LoginPage implements OnInit, OnDestroy {
     if (loginState?.error) {
       const toastController = await this.toastController.create({
         message: loginState.error.message,
-        duration: 3000,
+        duration: 2000,
         color: 'danger',
         position: 'bottom',
       });
